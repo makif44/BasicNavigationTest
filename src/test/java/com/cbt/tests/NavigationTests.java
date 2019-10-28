@@ -29,6 +29,8 @@ public class NavigationTests {
         driver1.close();
 
 
+        WebDriver driver2 =BrowserFactory.getDriver("chrome");
+        driver2.get("http://google.com");
     }
 }
 
