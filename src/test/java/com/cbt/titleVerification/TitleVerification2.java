@@ -1,5 +1,6 @@
-package com.cbt.utilities;
+package com.cbt.titleVerification;
 
+import com.cbt.utilities.BrowserFactory;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ public class TitleVerification2 {
     public static void main(String[] args) {
         ArrayList<String> urls = new ArrayList< >(Arrays.asList("https://lulugandgeorgia.com", "https://wayfair.com/",
                 "https://walmart.com", "https://westelm.com/"));
-        WebDriver driver=BrowserFactory.getDriver("chrome");
+        WebDriver driver= BrowserFactory.getDriver("chrome");
         driver.get(urls.get(0));
         String title1=driver.getTitle();
         System.out.println(title1);

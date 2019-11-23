@@ -1,7 +1,7 @@
 package com.cbt.VyTrack;
 
 import com.cbt.utilities.BrowserFactory;
-import com.cbt.utilities.StringUtility;
+import com.cbt.utilities.VerifyResult;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,7 +18,7 @@ public class Login_automation {
         login.click();
         String expectedUrl="https://qa2.vytrack.com/";
         String actualUrl=driver.getCurrentUrl();
-        StringUtility.verifyEquals(expectedUrl,actualUrl);
+        VerifyResult.verifyEquals(expectedUrl,actualUrl);
         driver.close();
 
 

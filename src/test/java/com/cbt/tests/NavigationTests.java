@@ -1,7 +1,7 @@
 package com.cbt.tests;
 
 import com.cbt.utilities.BrowserFactory;
-import com.cbt.utilities.StringUtility;
+import com.cbt.utilities.VerifyResult;
 import org.openqa.selenium.WebDriver;
 
 public class NavigationTests {
@@ -23,14 +23,13 @@ public class NavigationTests {
         driver1.navigate().to("https://etsy.com");
         String expectedresult4=driver1.getTitle();
         driver1.navigate().back();
-        StringUtility.verifyEquals(expectedresult3,driver1.getTitle());
+        VerifyResult.verifyEquals(expectedresult3,driver1.getTitle());
         driver1.navigate().forward();
-        StringUtility.verifyEquals(expectedresult4,driver1.getTitle());
+        VerifyResult.verifyEquals(expectedresult4,driver1.getTitle());
         driver1.close();
 
 
-        WebDriver driver2 =BrowserFactory.getDriver("chrome");
-        driver2.get("http://google.com");
+
     }
 }
 

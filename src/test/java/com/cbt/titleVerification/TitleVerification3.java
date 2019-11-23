@@ -1,12 +1,12 @@
-package com.cbt.utilities;
+package com.cbt.titleVerification;
 
+import com.cbt.utilities.BrowserFactory;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TitleVerification3 {
-    
     public static void main(String[] args) {
         ArrayList<String> urls = new ArrayList<>(Arrays.asList("https://lulugandgeorgia.com", "https://wayfair.com/",
                 "https://walmart.com", "https://westelm.com/"));

@@ -1,6 +1,6 @@
 package com.cbt.utilities;
 
-public class Wait {
+public class BrowserUtils {
     public static void wait(int seconds){
         try {
             Thread.sleep(seconds*1000);
