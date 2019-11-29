@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class HomeWork2 {
+public class Homework2 {
     WebDriver driver;
     @BeforeMethod
     public void setUp(){
