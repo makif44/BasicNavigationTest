@@ -1,4 +1,4 @@
-package com.cbt.testCases;
+package com.cbt.Assigments;
 
 import com.cbt.utilities.BrowserFactory;
 import com.cbt.utilities.BrowserUtils;
