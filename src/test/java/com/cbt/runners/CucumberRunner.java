@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features =  "src\\test\\resources\\features",
         glue = "com/cbt/step_definitions",
-        dryRun = false,
+        dryRun = true,
         tags = "@store_manager",
         plugin = {"html:target/default-cucumber-report",
                 "json:target/cucumber.json"
