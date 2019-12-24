@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -88,9 +89,20 @@ public class HomeWork4 extends TestBase {
     }
     @Test
     public void test6(){
+        Driver.get().findElement(By.xpath("//*[@class=\"btn main-group btn-primary pull-right \"]")).click();
+        WebElement load2=Driver.get().findElement(By.xpath("//*[@class=\"loader-mask shown\"]"));
+        wait.until(ExpectedConditions.invisibilityOf(load2));
+        WebElement startTime=Driver.get().findElement(By.xpath("(//*[@class=\"fields-row\"]/input)[2]"));
+        startTime.click();
+        Driver.get().findElement(By.xpath("//*[@class=\"ui-timepicker-pm\"][text()=\"9:00 PM\"]")).click();
+        BrowserUtils.wait(2);
+        WebElement endTime=Driver.get().findElement(By.xpath("(//*[@class=\"fields-row\"]/input)[4]"));
+        endTime.click();
+        WebElement  endTime2=Driver.get().findElement(By.xpath("(//*[@class=\"ui-timepicker-pm ui-timepicker-selected\"])[2]"));
+        Assert.assertEquals(endTime2.getText(),"10:00 PM");
 
     }
-    @Test(description = "time section should not be able to display but not")
+    @Test
     public void test7(){
         Driver.get().findElement(By.xpath("//*[@class=\"btn main-group btn-primary pull-right \"]")).click();
         WebElement load2=Driver.get().findElement(By.xpath("//*[@class=\"loader-mask shown\"]"));
@@ -100,13 +112,14 @@ public class HomeWork4 extends TestBase {
         AllDayEvent.click();
         Assert.assertTrue(AllDayEvent.isSelected());
 
-       WebElement StartTime=Driver.get().findElement(By.xpath("//*[@class='input-small timepicker-input start ui-timepicker-input']"));
-        WebElement EndTime= Driver.get().findElement(By.xpath("//*[@class='input-small timepicker-input end ui-timepicker-input']"));
-        WebElement startDate=Driver.get().findElement(By.xpath("//*[@class='input-small datepicker-input start hasDatepicker']"));
-        WebElement endDate=Driver.get().findElement(By.xpath("//*[@class='input-small datepicker-input end hasDatepicker']"));
+        WebElement StartTime=Driver.get().findElement(By.xpath("(//*[@class=\"fields-row\"]/input)[2]"));
+        WebElement EndTime= Driver.get().findElement(By.xpath("(//*[@class=\"fields-row\"]/input)[4]"));
+        WebElement startDate=Driver.get().findElement(By.xpath("(//*[@class=\"fields-row\"]/input)[1]"));
+        WebElement endDate=Driver.get().findElement(By.xpath("(//*[@class=\"fields-row\"]/input)[3]"));
+        wait.until(ExpectedConditions.invisibilityOf(StartTime));
 
-        Assert.assertTrue(StartTime.isDisplayed());
-        Assert.assertTrue(EndTime.isEnabled());
+        Assert.assertFalse(StartTime.isDisplayed());
+        Assert.assertFalse(EndTime.isDisplayed());
         Assert.assertTrue(startDate.isEnabled());
         Assert.assertTrue(endDate.isEnabled());
 
@@ -185,7 +198,7 @@ public class HomeWork4 extends TestBase {
     }
     @Test
     public void test12(){
-        Driver.get().findElement(By.xpath("//*[@class=\"btn main-group btn-primary pull-right \"]")).click();
+        Driver.get().findElement(By.linkText("Create Calendar Event")).click();
         WebElement load2=Driver.get().findElement(By.xpath("//*[@class=\"loader-mask shown\"]"));
         wait.until(ExpectedConditions.invisibilityOf(load2));
         WebElement Repeat= Driver.get().findElement(By.xpath("((//*[@class=\"control-group control-group-checkbox\"])[2]/div)[2]/input"));
@@ -193,9 +206,12 @@ public class HomeWork4 extends TestBase {
         Repeat.click();
         Assert.assertTrue(Repeat.isSelected());
         WebElement weekly= Driver.get().findElement(By.xpath("//*[@class=\"recurrence-repeats__select\"]"));
-        weekly.click();
-        WebElement weekl1= Driver.get().findElement(By.xpath("(//*[@class=\"recurrence-repeats__select\"]/option)[2]"));
-        weekl1.click();
+        Select select= new Select(weekly);
+        select.selectByIndex(1);
+        BrowserUtils.wait(2);
+        //weekly.click();
+        //WebElement weekl1= Driver.get().findElement(By.xpath("(//*[@class=\"recurrence-repeats__select\"]/option)[2]"));
+        //weekl1.click();
         WebElement monday= Driver.get().findElement(By.xpath("(//*[@value=\"monday\"])[3]"));
         WebElement friday=Driver.get().findElement(By.xpath("(//*[@value=\"friday\"])[3]"));
         WebElement never=Driver.get().findElement(By.xpath("(//*[@type=\"radio\"])[3]"));
@@ -204,12 +220,16 @@ public class HomeWork4 extends TestBase {
         never.click();
         Assert.assertTrue(monday.isSelected());
         Assert.assertTrue(friday.isSelected());
-        String a =Driver.get().findElement(By.xpath("(//*[@class='control-group recurrence-summary alert-info']//span)[1]")).getText();
+        String summary =Driver.get().findElement(By.xpath("(//*[@class='control-group recurrence-summary alert-info']//span)[1]")).getText();
 
-        Assert.assertEquals(a,"Weekly every 1 week on Monday, Friday");
+        Assert.assertEquals(summary,"Weekly every 1 week on Monday, Friday");
 
+    }
+    @Test
+    public void test13(){
+        WebElement treeDot=Driver.get().findElement(By.xpath("(//*[@class=\"more-bar-holder\"])[1]"));
 
-
+        treeDot.click();
     }
 
 
